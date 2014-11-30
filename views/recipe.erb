@@ -1,0 +1,17 @@
+<table>
+  <thead>
+    <tr>
+      <th width="200">
+        <%= @name %>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @ingredients.to_a.each do |ingredient| %>
+    <tr>
+      <td>
+        <%= ingredient["name"] %>
+      </td>
+    <% end %>
+  </tbody>
+</table>
