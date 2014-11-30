@@ -39,7 +39,7 @@ get '/recipes/:id' do
   WHERE recipes.id = $1;"
 
 
-  recipe_name_query = "SELECT recipes.name AS recipe
+  recipe_name_query = "SELECT recipes.name AS recipe, recipes.instructions, recipes.description
   FROM recipes
   WHERE recipes.id = $1;"
 
@@ -55,7 +55,10 @@ get '/recipes/:id' do
 
   @recipe_name.to_a.each do |recipe|
     @name = recipe["recipe"]
+    @instructions = recipe["instructions"]
+    @description = recipe["description"]
   end
+
 
 
 

@@ -7,11 +7,46 @@
     </tr>
   </thead>
   <tbody>
+    <tr>
+      <td>
+        <%= @description %>
+      </td>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr>
+      <th width="200">
+        Ingredients
+      </th>
+    </tr>
+  </thead>
+  <tbody>
     <% @ingredients.to_a.each do |ingredient| %>
     <tr>
       <td>
         <%= ingredient["name"] %>
       </td>
-    <% end %>
+      <% end %>
+    </tr>
+  </tbody>
+</table>
+
+
+<table>
+<thead>
+  <tr>
+    <th width="200">
+      Instructions
+    </th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>
+      <%= @instructions %>
+    </td>
+  </tr>
   </tbody>
 </table>
