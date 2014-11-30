@@ -3,10 +3,6 @@ require 'sinatra/reloader'
 require 'pg'
 require 'pry'
 
-
-
-
-
 def db_connection
   begin
     connection = PG.connect(dbname: 'recipes')
@@ -17,7 +13,6 @@ def db_connection
     connection.close
   end
 end
-
 
 get '/recipes' do
   query = "SELECT recipes.name, recipes.id
@@ -38,16 +33,13 @@ get '/recipes/:id' do
   JOIN recipes on recipes.id = ingredients.recipe_id
   WHERE recipes.id = $1;"
 
-
   recipe_name_query = "SELECT recipes.name AS recipe, recipes.instructions, recipes.description
   FROM recipes
   WHERE recipes.id = $1;"
 
-
   db_connection do |connection|
     @ingredients = connection.exec_params(query, [@id])
   end
-
 
   db_connection do |connection|
     @recipe_name = connection.exec_params(recipe_name_query, [@id])
@@ -58,10 +50,6 @@ get '/recipes/:id' do
     @instructions = recipe["instructions"]
     @description = recipe["description"]
   end
-
-
-
-
 
   erb :recipe
 end
